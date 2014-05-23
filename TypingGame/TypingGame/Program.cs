@@ -11,31 +11,59 @@ namespace TypingGame
     {
         static void Main(string[] args)
         {
-            Timer time = new Timer();
+                     
             Console.WriteLine("Welcome to The Typing Game. Press enter to start. ");
-            Console.WriteLine("Please Enter your name:");
+            Console.Write("Please Enter your name: ");
             var username = Console.ReadLine();
-            time.Start();
             string sentence1 = "The quick brown fox jumped over the lazy dog?";
 
             //print out output
             Console.WriteLine(sentence1);
-
+            var now = DateTime.Now.TimeOfDay;
             //input
             var sentence = Console.ReadLine();
-
+            var end = DateTime.Now.TimeOfDay;
             Console.WriteLine("--------------------------------------------------------------------");
+     
+            var elasped = end - now;
+            var currentTime = elasped.Seconds + ":" + elasped.Milliseconds;
 
-            if (sentence.Equals(sentence1) == false)
+            var countMistakes = 0;
+
+            var sentenceToWords = sentence1.Split();
+            var sentenceToWords1 = sentence.Split();
+
+
+            if (sentenceToWords.Length == sentenceToWords1.Length)
             {
-                Console.WriteLine("Sorry {0}, you have made at least one mistake.", username);
+                for (int i = 0; i < sentenceToWords.Length; i++)
+                {
+                    if (sentenceToWords[i] != sentenceToWords1[i])
+                    {
+                        countMistakes++;
+                    }
+                }
+            }
+
+            
+
+
+            if(sentence.Length == sentence1.Length)
+            {
+                if (sentence.Equals(sentence1) == false)
+                {
+                    Console.WriteLine("Sorry {0}, you have made {1} mistake.", username, countMistakes);
+                    Console.WriteLine("Your current time: " + currentTime);
+                    Console.ReadLine();
+                }
+                else Console.WriteLine("Well done {0}! You made zero mistakes.", username);
+                Console.WriteLine("Your current time: " + currentTime);
                 Console.ReadLine();
             }
-            else Console.WriteLine("Well done {0}! You made zero mistakes.", username);
 
-
-
-
+            Console.WriteLine("Sorry {0}, Please try again. Input was invalid", username);
+            Console.WriteLine("Your current time: " + currentTime);
+            Console.ReadLine();
 
         }
     }
