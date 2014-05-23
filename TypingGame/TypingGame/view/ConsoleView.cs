@@ -22,6 +22,20 @@ namespace TypingGame
             Console.WriteLine("|========================|");
         }
 
+        public void EndGamePrinter(TimeSpan elapsedTime, int totalMistakes, int totalSentenceLength)
+        {
+            Console.WriteLine("Time elapsed:     " + (elapsedTime).Seconds + ":" + (elapsedTime).Milliseconds + " seconds");
+            Console.WriteLine("Total Mistakes:   " + totalMistakes);
+            Console.WriteLine("Words per minute: " + (int)(totalSentenceLength / FormatElapsedTime(elapsedTime)));
+            Console.WriteLine("Press enter to go back to menu");
+            Console.ReadLine();
+        }
+
+        public float FormatElapsedTime(TimeSpan elapsedTimeInput)
+        {
+            return (float)(elapsedTimeInput.Seconds / 60);
+        }
+
         public void Countdown()
         {
             

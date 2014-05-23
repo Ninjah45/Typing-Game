@@ -36,5 +36,18 @@ namespace TypingGame
             
             return listofSent;
         }
+
+        /// <summary>
+        /// Get random sentence from the database
+        /// </summary>
+        /// <param name="difficulty">User chosen difficulty of sentence</param>
+        /// <returns>Sentence object</returns>
+        public Sentence GetRandomSentence(int difficulty)
+        {
+            List<Sentence> sentList = GetSentence(1);
+            Random random = new Random();
+            Sentence randomSentence = sentList[random.Next(0, sentList.Count)];
+            return randomSentence;
+        }
     }
 }
