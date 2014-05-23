@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace TypingGame.model
 {
-    class HighScoreDB
+    public class HighScoreDB
     {
         public string Name { get; set; }
         public int Score { get; set; }
