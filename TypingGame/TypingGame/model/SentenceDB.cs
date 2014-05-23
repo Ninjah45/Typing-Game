@@ -11,24 +11,30 @@ namespace TypingGame
     {
         SqlConnection connection = new SqlConnection(@"Server=.\sqlexpress;Database=TypingGame;Trusted_Connection=True;");
 
-        public Sentence GetSentence(int difficulty)
+        public List<Sentence> GetSentence(int difficulty)
         {
             connection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM Lines WHERE difficulty = @difficulty");
+            SqlCommand command = new SqlCommand("SELECT * FROM Lines WHERE difficulty=@difficulty", connection);
             command.Parameters.AddWithValue("@difficulty", difficulty);
-            Sentence sentence = new Sentence();
+            List<Sentence> listofSent = new List<Sentence>();
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
-                reader.Read();
-                sentence.SentenceString = reader.GetString(reader.GetOrdinal("sentence_string"));
-                sentence.SentenceLength = reader.GetInt32(reader.GetOrdinal("sentence_length"));
+                while (reader.Read())
+                {
+                    Sentence sentence = new Sentence();
+
+                    sentence.SentenceString = reader.GetString(reader.GetOrdinal("sentence_string"));
+                    sentence.SentenceLength = reader.GetInt32(reader.GetOrdinal("sentence_length"));
+                    sentence.Difficulty = difficulty;
+                    listofSent.Add(sentence);
+                }
             }
 
             connection.Close();
 
-            sentence.Difficulty = difficulty;
-            return sentence;
+            
+            return listofSent;
         }
     }
 }

@@ -4,3 +4,6 @@ c:\users\user\documents\visual studio 2013\Projects\TypingGame\TypingGame\bin\De
 c:\users\user\documents\visual studio 2013\Projects\TypingGame\TypingGame\obj\Debug\TypingGame.csprojResolveAssemblyReference.cache
 c:\users\user\documents\visual studio 2013\Projects\TypingGame\TypingGame\obj\Debug\TypingGame.exe
 c:\users\user\documents\visual studio 2013\Projects\TypingGame\TypingGame\obj\Debug\TypingGame.pdb
+C:\Code\Typing-Game\TypingGame\TypingGame\TypingGame\bin\Debug\TypingGame.exe.config
+C:\Code\Typing-Game\TypingGame\TypingGame\TypingGame\obj\Debug\TypingGame.exe
+C:\Code\Typing-Game\TypingGame\TypingGame\TypingGame\obj\Debug\TypingGame.pdb

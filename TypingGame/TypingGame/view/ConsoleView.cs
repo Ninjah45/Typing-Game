@@ -20,7 +20,6 @@ namespace TypingGame
             Console.WriteLine("|  3. DIFFICULITY        |");
             Console.WriteLine("|                        |");
             Console.WriteLine("|========================|");
-            Console.ReadLine();
         }
 
         public void Countdown()
@@ -35,14 +34,12 @@ namespace TypingGame
             countdown--;
             Console.WriteLine("{0}...", countdown);
             System.Threading.Thread.Sleep(1000);
-              
+            Console.Clear();
         }
 
         public void PrintSentence(int question, string sentence)
         {
-            Console.WriteLine(question + ". ");
-            Console.WriteLine(sentence);
-            //GET THE USERS SENTENCE INPUT?
+            Console.WriteLine(question + ". " + sentence);
         }
 
         public void timesUp()

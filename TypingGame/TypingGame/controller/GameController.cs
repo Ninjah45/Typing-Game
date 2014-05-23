@@ -32,12 +32,37 @@ namespace TypingGame
             {
                 case "1":
                     _view.Countdown();
-                    string sent = _sentencedb.GetSentence(2).SentenceString;
-                    _view.PrintSentence(1,sent);
-                    string sentence = Console.ReadLine();
-                    string[] sentenceArray = sentence.Split(' ');
-                    int mistakes = Mistakes(sentenceArray, sent);
-                    Console.WriteLine(mistakes);
+                    TimeSpan startTime = StartTimer();
+                    int wordCounter = 1;
+                    int totalMistakes = 0;
+                    int totalSentenceLength = 0;
+
+                    while (wordCounter <= 5)
+                    {
+                        List<Sentence> sentList = _sentencedb.GetSentence(1);
+                        Random random = new Random();
+                        Sentence sentence1 = sentList[random.Next(0, sentList.Count)];
+                        string sent = sentence1.SentenceString;
+                        totalSentenceLength += sentence1.SentenceLength;
+                        _view.PrintSentence(wordCounter, sent);
+                        string sentence = Console.ReadLine();
+                        string[] sentenceArray = sentence.Split(' ');
+                        int mistakes = Mistakes(sentenceArray, sent);
+                        totalMistakes += mistakes;
+                        Console.WriteLine("Number of mistakes: " + mistakes);
+                        Console.WriteLine();
+                        wordCounter++;
+                    }
+                    TimeSpan endTime = EndTimer();
+                    TimeSpan elapsedTime = endTime - startTime;
+                    
+                    Console.WriteLine("Time elapsed:     " + (endTime - startTime).Seconds + ":" + (endTime - startTime).Milliseconds + " seconds");
+                    Console.WriteLine("Total Mistakes:   " + totalMistakes);
+                    Console.WriteLine("Words per minute: " + (int)(totalMistakes / (decimal)((decimal)(endTime - startTime).Seconds / 60)));
+                    Console.WriteLine("Press enter to go back to menu");
+                    Console.ReadLine();
+                    Console.Clear();
+                    StartGame();
                     /*
                     _view.timesUp();
                     _view.PrintScore();
@@ -77,6 +102,7 @@ namespace TypingGame
             string[] inputArray = stringInput.Split(' ');
             int countMistakes = 0;
 
+
             for (int i = 0; i < sentenceArrayInput.Length; i++)
                 {
                     if (sentenceArrayInput[i] != inputArray[i])
@@ -85,7 +111,7 @@ namespace TypingGame
                     }
                 }
 
-            return countMistakes;
+            return countMistakes + (inputArray.Length - sentenceArrayInput.Length);
         }
 
                 

@@ -15,7 +15,7 @@ namespace TypingGame
             controller.StartGame();
 
 
-
+            /*
             Console.WriteLine("Welcome to The Typing Game. Press enter to start. ");
             Console.Write("Please Enter your name: ");
             var username = Console.ReadLine();
@@ -68,6 +68,8 @@ namespace TypingGame
             Console.WriteLine("Sorry {0}, Please try again. Input was invalid", username);
             Console.WriteLine("Your current time: " + currentTime);
             Console.ReadLine();
+             */ 
+             
 
         }
     }
