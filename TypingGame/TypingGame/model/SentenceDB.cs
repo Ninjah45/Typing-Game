@@ -15,10 +15,12 @@ namespace TypingGame
         {
             connection.Open();
             SqlCommand command = new SqlCommand("SELECT * FROM Lines WHERE difficulty = @difficulty");
+            command.Parameters.AddWithValue("@difficulty", difficulty);
             Sentence sentence = new Sentence();
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
+                reader.Read();
                 sentence.SentenceString = reader.GetString(reader.GetOrdinal("sentence_string"));
                 sentence.SentenceLength = reader.GetInt32(reader.GetOrdinal("sentence_length"));
             }
