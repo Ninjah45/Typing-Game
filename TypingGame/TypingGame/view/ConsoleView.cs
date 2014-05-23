@@ -80,5 +80,47 @@ namespace TypingGame
             Console.WriteLine("| 10. " + highscoretable[9] + "        |");
             Console.WriteLine("|======================================|"); */
         }
+            Console.WriteLine(sentence);
+            //GET THE USERS SENTENCE INPUT?
+        }
+
+        static void timesUp()
+        {
+            Console.WriteLine("TIMES UP!");
+            System.Threading.Thread.Sleep(1000);
+        }
+
+        static void PrintScore(int score, int mistakes)
+        {
+            Console.WriteLine("You made {0} mistakes", mistakes);
+	        Console.WriteLine("You scored" + score);
+	        //sleep for 500ms??
+        }
+
+        static string EnterName()
+        {   
+            Console.WriteLine("New highscore!");
+            Console.WriteLine("Enter your name...");
+	        string name = Console.ReadLine();
+	        return name;
+        }
+
+        static void HighscoresTable(Dictionary<string, int> highscoretable) //will need to change this to retrieve difficulty for future releases.
+        {
+	        Console.WriteLine("|======================================|");
+	        Console.WriteLine("|  High Scores                         |");
+	        Console.WriteLine("|======================================|");
+	        Console.WriteLine("|  1. " + highscoretable[0] + "        |");
+            Console.WriteLine("|  2. " + highscoretable[1] + "        |");
+            Console.WriteLine("|  3. " + highscoretable[2] + "        |");
+            Console.WriteLine("|  4. " + highscoretable[3] + "        |");
+            Console.WriteLine("|  5. " + highscoretable[4] + "        |");
+            Console.WriteLine("|  6. " + highscoretable[5] + "        |");
+            Console.WriteLine("|  7. " + highscoretable[6] + "        |");
+            Console.WriteLine("|  8. " + highscoretable[7] + "        |");
+            Console.WriteLine("|  9. " + highscoretable[8] + "        |");
+            Console.WriteLine("| 10. " + highscoretable[9] + "        |");
+	        Console.WriteLine("|======================================|");
+        }
     }
-}
+}    
