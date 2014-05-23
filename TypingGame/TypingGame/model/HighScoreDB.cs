@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TypingGame.model
 {
-    class HighScoreDB
+    public class HighScoreDB
     {
     }
 }
