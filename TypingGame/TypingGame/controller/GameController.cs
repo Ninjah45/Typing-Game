@@ -11,6 +11,7 @@ namespace TypingGame
     {
         ConsoleView _view;
         Sentence _sentence;
+        SentenceDB _sentencedb;
         public string[] SentenceToWords { get; set; }
         public string[] SentenceToWordsCompare { get; set; }
         public string StringDB { get; set; }
@@ -20,11 +21,32 @@ namespace TypingGame
         {
             _view = new ConsoleView();
             _sentence = new Sentence();
+            _sentencedb = new SentenceDB();
         }
 
         public void StartGame()
         {
             _view.Menu();
+            string menuSelect = Console.ReadLine();
+            switch (menuSelect)
+            {
+                case "1":
+                    _view.Countdown();
+                    string sent = _sentencedb.GetSentence(2).SentenceString;
+                    _view.PrintSentence(1,sent);
+                    string sentence = Console.ReadLine();
+                    string[] sentenceArray = sentence.Split(' ');
+                    int mistakes = Mistakes(sentenceArray, sent);
+                    Console.WriteLine(mistakes);
+                    /*
+                    _view.timesUp();
+                    _view.PrintScore();
+                    _view.EnterName();
+                    _view.HighscoresTable();
+                     * */
+                    break;
+                    
+            }
         }
 
         public TimeSpan StartTimer()
@@ -50,14 +72,14 @@ namespace TypingGame
             return finalSec + ":" + finalMilli;
         }
 
-        public int Mistakes()
+        public int Mistakes(string[] sentenceArrayInput, string stringInput)
         {
-
+            string[] inputArray = stringInput.Split(' ');
             int countMistakes = 0;
 
-            for (int i = 0; i < SentenceToWords.Length; i++)
+            for (int i = 0; i < sentenceArrayInput.Length; i++)
                 {
-                    if (SentenceToWords[i] != SentenceToWordsCompare[i])
+                    if (sentenceArrayInput[i] != inputArray[i])
                     {
                         countMistakes++;
                     }

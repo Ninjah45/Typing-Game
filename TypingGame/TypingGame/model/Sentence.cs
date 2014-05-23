@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TypingGame
 {
-    class Sentence
+    public class Sentence
     {
         public string SentenceString { get; set; }
         public int SentenceLength { get; set; }
