@@ -11,11 +11,20 @@ namespace TypingGame
     {
         ConsoleView _view;
         Sentence _sentence;
+        public string[] SentenceToWords { get; set; }
+        public string[] SentenceToWordsCompare { get; set; }
+        public string StringDB { get; set; }
+        public string Input { get; set; }
 
         public GameController()
         {
             _view = new ConsoleView();
             _sentence = new Sentence();
+        }
+
+        public void StartGame()
+        {
+            _view.Menu();
         }
 
         public TimeSpan StartTimer()
@@ -43,18 +52,21 @@ namespace TypingGame
 
         public int Mistakes()
         {
-            
-                for (int i = 0; i < sentenceToWords.Length; i++)
+
+            int countMistakes = 0;
+
+            for (int i = 0; i < SentenceToWords.Length; i++)
                 {
-                    if (sentenceToWords[i] != sentenceToWords1[i])
+                    if (SentenceToWords[i] != SentenceToWordsCompare[i])
                     {
                         countMistakes++;
                     }
                 }
 
-                return 0;
-            }
-            
+            return countMistakes;
         }
+
+                
     }
+}
 
