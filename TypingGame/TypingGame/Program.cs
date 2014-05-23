@@ -11,7 +11,11 @@ namespace TypingGame
     {
         static void Main(string[] args)
         {
-                     
+            GameController controller = new GameController();
+            controller.StartGame();
+
+
+
             Console.WriteLine("Welcome to The Typing Game. Press enter to start. ");
             Console.Write("Please Enter your name: ");
             var username = Console.ReadLine();
